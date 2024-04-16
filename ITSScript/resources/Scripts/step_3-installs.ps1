@@ -36,7 +36,7 @@ if (Test-Path $setupsFolder) {
     # Check if the Reader setup executable exists
     if (Test-Path $readerSetupPath) {
         # Run Reader setup silently
-        Start-Process $readerSetupPath -ArgumentList "/sAll /rs /rps /msi /norestart /quiet EULA_ACCEPT=YES" -WorkingDirectory "C:\newDir4" -Wait
+        Start-Process -FilePath $readerSetupPath -ArgumentList "/sAll /rs /rps /msi /norestart /quiet EULA_ACCEPT=YES" -Wait
         Write-Host "Adobe Reader has been installed."
     } else {
         Write-Host "Reader setup executable not found in $setupsFolder"
@@ -44,7 +44,7 @@ if (Test-Path $setupsFolder) {
     # Check if the Chrome setup executable exists
     if (Test-Path $chromeSetupPath) {
         # Run Chrome setup silently
-        Start-Process -FilePath chromeSetupPath -ArgumentList "/silent /install" -Wait
+        Start-Process -FilePath $chromeSetupPath -ArgumentList "/silent /install" -Wait
         Write-Host "Google Chrome has been installed."
     } else {
         Write-Host "Chrome setup executable not found in $setupsFolder"
