@@ -13,18 +13,22 @@ $NewPlan = $(powercfg -getactivescheme).split()[3]
 
 # PLAN SETTINGS
 
-#Turn off Display - On Battery - 15 = 15 Minutes
-powercfg -change -monitor-timeout-dc 15
+#Turn off Display - On Battery - 30 = 30 Minutes
+powercfg -change -monitor-timeout-dc 30
 #Turn off Display - While plugged in - 0 = Never
 powercfg -change -monitor-timeout-ac 0
-#Sleep Mode - On Battery - 0 = Never
-powercfg -change -standby-timeout-ac 0
+#Sleep Mode - On Battery - 30 = Never
+powercfg -change -standby-timeout-ac 30
 #Sleep Mode - While plugged in - 0 = Never
 powercfg -change -standby-timeout-dc 0
 #Turn off Hard Disk - On Battery - 30 = 30 Minutes
-powercfg -change -disk-timeout-dc 30
+powercfg -change -disk-timeout-dc 10
 #Turn off Hard Disk - While Plugged In - 0 = Never
 powercfg -change -disk-timeout-ac 0
+#Hibernate - On Battery - 180 minutes
+powercfg -change -hibernate-timeout-dc 180
+#Hibernate - While plugged in - 0 = Never
+powercfg -change -hibernate-timeout-ac 0
 
 
 #APPLY CHANGES
