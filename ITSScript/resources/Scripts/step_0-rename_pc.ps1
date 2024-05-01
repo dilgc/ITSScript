@@ -3,7 +3,7 @@
 try {
 
     $ITSNumber = Read-Host "Enter ITS Number"
-    Rename-Computer -NewName "ITS$ITSNumber" -ErrorAction Stop
+    Rename-Computer -NewName "ITS$ITSNumber"
     
     Write-Host "PC has been renamed to $ITSNumber successfully."
 }
@@ -23,7 +23,7 @@ try{
     # Set workstation description
     $WMIObject = Get-WmiObject Win32_OperatingSystem
     $WMIObject.Description = $WorkstationDescription
-    $WMIObject.Put() -ErrorAction Stop
+    $WMIObject.Put()
 
     Write-Host "Description has been set to $WorkstationDescription successfully."
 }
