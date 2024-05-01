@@ -33,3 +33,15 @@ catch
     Write-Host "Error occurred trying to set workstation description"
     Write-Host "Error: $errorMessage"
 }
+
+# Get the current time zone
+$currentTimeZone = Get-TimeZone
+
+# Check if the current time zone is Eastern Standard Time
+if ($currentTimeZone.Id -ne 'Eastern Standard Time') {
+    # Set the time zone to Eastern Standard Time
+    Set-TimeZone -Id 'Eastern Standard Time'
+    Write-Host "Time zone changed to Eastern Standard Time."
+} else {
+    Write-Host "Time zone is already Eastern Standard Time."
+}
