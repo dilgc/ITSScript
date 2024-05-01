@@ -6,6 +6,8 @@ It will automate:
 -Updating PC's name
 -Updating PC's description
 -Updating PC's timezone (EST)
+-Creating a power plan
+-Disabling Fast Startup
 -Installing Java
 -Installing Chrome
 -Installing FireFox
