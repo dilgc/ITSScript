@@ -1,18 +1,16 @@
-# Check if Windows Update is currently running
-$windowsUpdateStatus = Get-Service wuauserv
-
-if ($windowsUpdateStatus.Status -eq 'Running') {
-    Write-Host "Windows Update is currently running. Waiting for updates to finish..."
-    
-    # Wait until Windows Update service stops
-    while ($windowsUpdateStatus.Status -eq 'Running') {
-        Start-Sleep -Seconds 60  # Wait for 60 seconds before checking again
-        $windowsUpdateStatus = Get-Service wuauserv
-    }
-    
-    Write-Host "Windows Update has finished."
+#Update Windows on the machine
+try{
+# Install PSWindowsUpdate module if not already installed
+if (-not (Get-Module -Name PSWindowsUpdate -ListAvailable)) {
+    Install-Module -Name PSWindowsUpdate -Force -Scope CurrentUser -AllowClobber
 }
 
-# Restart the system
-Write-Host "Restarting the system..."
-Restart-Computer -Force
+# Import the PSWindowsUpdate module
+Import-Module PSWindowsUpdate -Force
+
+# Perform Windows Update
+Install-WindowsUpdate -AcceptAll -Verbose
+}
+catch{
+Write-Host "Did not update Windows successfully."
+}
