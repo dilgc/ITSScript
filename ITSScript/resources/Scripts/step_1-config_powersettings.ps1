@@ -2,33 +2,18 @@ Write-Output "Setting up ITS power plan..."
 
 # Get Current Active Plan
 $OriginalPlan = $(powercfg -getactivescheme).split()[3]
-if (-not $OriginalPlan) {
-    Write-Output "Failed to retrieve the current active power plan."
-}
 
 # Duplicate Current Active Plan
 $Duplicate = powercfg -duplicatescheme $OriginalPlan
-if (-not $Duplicate) {
-    Write-Output "Failed to duplicate the current active power plan."
-}
 
 # Change Name of Duplicated Plan
 $CurrentPlan = powercfg -changename ($Duplicate).split()[3] "ITS Power Plan"
-if (-not $CurrentPlan) {
-    Write-Output "Failed to change the name of the duplicated power plan."
-}
 
 # Set New Plan as Active Plan
 $SetActiveNewPlan = powercfg -setactive ($Duplicate).split()[3]
-if (-not $SetActiveNewPlan) {
-    Write-Output "Failed to set the duplicated power plan as active."
-}
 
 # Get the New Plan
 $NewPlan = $(powercfg -getactivescheme).split()[3]
-if (-not $NewPlan) {
-    Write-Output "Failed to retrieve the newly activated power plan."
-}
 
 # PLAN SETTINGS
 try {
