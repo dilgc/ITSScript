@@ -21,10 +21,10 @@ try {
     powercfg -change -monitor-timeout-dc 30
     # Turn off Display - While plugged in - 0 = Never
     powercfg -change -monitor-timeout-ac 0
-    # Sleep Mode - On Battery - 30 = Never
-    powercfg -change -standby-timeout-ac 30
-    # Sleep Mode - While plugged in - 0 = Never
-    powercfg -change -standby-timeout-dc 0
+    # Sleep Mode - On Battery - 30 = 30 Minutes
+    powercfg -change -standby-timeout-dc 30
+    # Sleep Mode - While plugged in - 0 = Never 
+    powercfg -change -standby-timeout-ac 0
     # Turn off Hard Disk - On Battery - 30 = 30 Minutes
     powercfg -change -disk-timeout-dc 10
     # Turn off Hard Disk - While Plugged In - 0 = Never
